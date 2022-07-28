@@ -1,12 +1,28 @@
 const container = document.querySelector('.container');
-let penColor = 'black';
+const gridSizeBtn = document.querySelector('.grid-size-btn');
 
-// Create 16 rows and add 16 squares to each
+let penColor = 'black';
+let gridSize = 16;
+
+gridSizeBtn.addEventListener('click', changeGridSize);
+
+function changeGridSize() {
+    let size = +prompt("Enter a desired grid size");
+    if (!size) return;
+    if (size < 1) return;
+    if (size > 100) return;
+
+    gridSize = size;
+
+    ClearGrid(container);
+    CreateGrid(container);
+}
+
 function CreateGrid(container) {
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < gridSize; i++) {
         let row = document.createElement('div');
         row.classList.add('row');
-        for (let j = 0; j < 16; j++) {
+        for (let j = 0; j < gridSize; j++) {
             let square = document.createElement('div');
             square.classList.add('square');
             square.addEventListener('mouseover', ChangeColorHandler);
@@ -16,8 +32,12 @@ function CreateGrid(container) {
     }
 }
 
+function ClearGrid(container) {
+    container.innerHTML = '';
+}
+
 function ChangeColorHandler() {
-    this.style.backgroundColor = 'black';
+    this.style.backgroundColor = penColor;
 }
 
 CreateGrid(container);

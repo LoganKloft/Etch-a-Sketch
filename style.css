@@ -3,13 +3,24 @@
     margin: 0px;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
 .row {
     display: flex;
-    justify-content: center;
+    flex-grow: 1;
 }
 
 .square {
-    width: 40px;
-    height: 40px;
     border: 1px solid black;
+    flex-grow: 1;
 }
